@@ -18,7 +18,7 @@ const App = () => {
    
   },[])
   function getNotes(){
-     axios.get('http://localhost:3000/notes').then((res)=>{
+     axios.get('https://backend-sh78.onrender.com/notes').then((res)=>{
     setnotes(res.data.notes);
    console.log(res.data);
    })
@@ -28,7 +28,7 @@ const App = () => {
   const title1=e.target.title.value;
   const description1=e.target.description.value;
   
-  axios.post('http://localhost:3000/notes',{
+  axios.post('https://backend-sh78.onrender.com/notes',{
     title:title1,
     description:description1,
 
@@ -39,7 +39,7 @@ const App = () => {
  function deletehandler(noteid){
   console.log(noteid);
   
- axios.delete('http://localhost:3000/notes/'+noteid).then((res)=>{
+ axios.delete('https://backend-sh78.onrender.com/notes/'+noteid).then((res)=>{
   getNotes();
  })
 }
@@ -50,7 +50,7 @@ function updatehandler(noteid){
   // axios.patch('http://localhost:3000/notes/'+id,{description}).then((res)=>{
   //   getNotes();
   // })
-  axios.patch('http://localhost:3000/notes/'+noteid,{description:prompt("Enter new description")}).then((res)=>{
+  axios.patch('https://backend-sh78.onrender.com/notes/'+noteid,{description:prompt("Enter new description")}).then((res)=>{
     getNotes();
   })
 }
