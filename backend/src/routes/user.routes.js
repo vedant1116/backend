@@ -3,7 +3,7 @@ const userRouter=express.Router()
 const identifyUser=require('../middlewares/auth.middleware')
 const userController=require('../controllers/user.controller')
 /**
- * @route POST /api/users/follow/:userid
+ * @route POST /api/users/follow/:username
  * @description Follow a user
  * @access Private
  */

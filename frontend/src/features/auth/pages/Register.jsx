@@ -1,17 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
+import React, {useState} from 'react'
+import {useAuth} from "../hooks/useAuth"
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import '../style/form.scss'
-import axios from 'axios'
+
+
 const Register = () => {
-  const [username, setusername] = useState('')
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('')
+    const {user,loading,handleRegister}=useAuth()
+
+    const [username, setusername] = useState('')
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+
+        const navigate = useNavigate()
     async function handleSubmit(e){
      e.preventDefault()
+      await handleRegister(username,email,password)
 
-
+     navigate('/')
     }
 
+    if (loading) {
+        return (<main>
+            <h1>Loading.....</h1>
+        </main>)
+    }
   return (
    <main>
     <div className='form-container'>
@@ -35,6 +48,7 @@ const Register = () => {
         placeholder="Enter password" />
         <button type="submit">Register</button>
     </form>
+    <p>Already have an account <Link to='/login'>Login</Link></p>
     </div>
    </main>
   )

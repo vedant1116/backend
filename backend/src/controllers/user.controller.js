@@ -8,7 +8,7 @@ const followeeUsername=req.params.username
 
 if(followerUsername==followeeUsername){
  return res.status(400).json({
-    message:"you cannont follow yourself"
+    message:"you cannot follow yourself"
  })
 }
 const isFolloweeExists= await userModel.findOne({
@@ -25,7 +25,7 @@ if(!isFolloweeExists){
  })
  if(isAlreadyFollowing){
     return res.status(200).json({
-        message:`You are already following ${followerUsername}`,
+        message:`You are already following ${followeeUsername}`,
         follow: isAlreadyFollowing
     })
  }
